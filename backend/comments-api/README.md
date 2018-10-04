@@ -27,6 +27,7 @@ Create a REST API with [Node.js](https://nodejs.org/) & [Express](https://expres
     "shootId": 1,
     "comment": "<script>alert('hello!');</script>"
 }
+```
 
 ## Guidelines
 
