@@ -4,9 +4,11 @@
 
 At Kink.com, users can comment on individual scenes. Each scene is identified by an unique positive integer known as a "shootId".
 
-Create a REST API with [Node.js](https://nodejs.org/) & [Express](https://expressjs.com/) that can stores and retrieves comments associated with a scene.
+Create a REST API with [Node.js](https://nodejs.org/) & [Express](https://expressjs.com/) that stores and retrieves comments associated with a scene.
 
 ## Payloads
+
+When creating a comment, use the following payloads:
 
 ```json
 {
@@ -39,8 +41,8 @@ Create a REST API with [Node.js](https://nodejs.org/) & [Express](https://expres
 - Return appropriate HTTP status codes for operations, including errors.
 - Use Node.js 8 and Express 4.
 - Use any additional npm modules as appropriate.
-- Include tests as necessary.
 - Documentation and maintainability is a plus.
+- Tests are not a requirement, but will be considered favorably.
 
 ### Time Allotment
 
