@@ -33,7 +33,7 @@ Using the HTML below, write a self-executing vanilla JavaScript function that cy
 
 Your output should emulate the following animated gif:
 
-![](https://github.com/Kink-Com/CodingChallenge/blob/master/carousel/carousel.gif)
+![](https://github.com/Kink-Com/CodingChallenge/blob/master/frontend/carousel/carousel.gif)
 
 ### Bonus
 
