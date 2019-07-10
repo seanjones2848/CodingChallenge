@@ -10,15 +10,6 @@ From the homepage, attempt to login and fail; validate that login failed.
 
 From the homepage, navigate to the first latest shoot; validate that the final destination is a shoot.
 
-## Getting Started
-
-Install [Docker](https://www.docker.com/).
-
-```bash
-npm install
-docker-compose up -d
-```
-
 ## Deliverables
 
 Provide a repository or zip containing the source code and instructions that will allow us to run your test suite.
@@ -28,10 +19,24 @@ Provide a repository or zip containing the source code and instructions that wil
 - Select a test framework; we use `mocha` and `chai`, but use what you're most comfortable with.
 - Tests should be executable through `npm test`.
 - Update `README.md` as necessary.
-- Use Selenium Webdriver and headless Chrome (included in `package.json` and `docker-compose.yml`).
 - Use `package.json` and do not commit / include `node_modules`.
 - All code should be written in JavaScript and executed using Node.js 8.
 - Documentation and maintainability is a plus.
+
+### Extra Credit
+
+This is not required, but this is how we're doing our tests now.
+
+Install [Docker](https://www.docker.com/).
+
+```bash
+mv BONUS-docker-compose.yml docker-compose.yml
+mv BONUS-package.json package.json
+npm install
+docker-compose up -d
+```
+
+Use Selenium Webdriver and headless Chrome (included in `package.json` and `docker-compose.yml`).
 
 ### Time Allotment
 
