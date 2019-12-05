@@ -10,6 +10,10 @@ Using the code in this directory as a starting point, ...
 npm install
 ```
 
+```bash
+node ./index.js
+```
+
 http://localhost:3000
 
 ## Requirements
