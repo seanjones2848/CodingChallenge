@@ -4,11 +4,13 @@
 
 Using the code in this directory as a starting point, ...
 
-## Prequsities
+## Prerequisites
 
 ```bash
 npm install
 ```
+
+http://localhost:3000
 
 ## Requirements
 
