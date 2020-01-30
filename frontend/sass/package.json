@@ -4,13 +4,15 @@
   "description": "Frontend SASS Challenge",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "npx node-sass --watch scss -o public/css"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
     "morgan": "^1.9.1",
+    "node-sass": "^4.13.1",
     "nunjucks": "^3.2.0",
     "winston": "^3.2.1"
   }
