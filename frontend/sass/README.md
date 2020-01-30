@@ -6,7 +6,7 @@ Using the code in this directory as a starting point, ...
 
 ## Prerequisites
 
-- Node is installed on your system
+- Current [Node.js](https://nodejs.org/en/) [LTS](https://nodejs.org/en/about/releases/)
 
 ## Getting up and running
 
