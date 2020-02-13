@@ -81,6 +81,12 @@ npm run watch:sass
 
 Visit http://localhost:3000 - you should see red text reading "Hello, world!" on a black background.
 
+To check against our [coding standards](https://github.com/Kink-Com/eslint-config-kink):
+
+```bash
+npx eslint .
+```
+
 ## Submission
 
 Create a new public Git repository in your favorite Git hosting service like GitHub. Do not use a template; keep it empty.

@@ -36,5 +36,5 @@ app.get('/', (request, response) => {
 });
 
 app.listen(PORT, () => {
-	logger.log({ level: 'info', message: `listening on ${PORT}`})
+	logger.log({ level: 'info', message: `listening on ${PORT}` });
 });
