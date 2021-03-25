@@ -4,23 +4,27 @@ Create a minimal JavaScript-based test suite that completes at least one of the 
 
 ## Challenge - Login Failure
 
-From the homepage, attempt to login and fail; validate that login failed.
+From /login, attempt to login and fail; validate that login failed.
 
-## Challenge - Latest Shoot
+Stretch goal: Login from the homepage instead.
 
-From the homepage, navigate to the first latest shoot; validate that the final destination is a shoot.
+## Challenge - Latest Scene
+
+From the homepage, navigate to the first latest scene; validate that the final destination is a scene.
+
+Stretch goal: Attempt to rate a scene and validate that you can see the members-only message.
 
 ## Deliverables
 
-Provide a repository or zip containing the source code and instructions that will allow us to run your test suite.
+Provide a public repository or zip containing the source code and instructions that will allow us to run your test suite.
 
 ## Guidelines
 
-- Select a test framework; we use `mocha` and `chai`, but use what you're most comfortable with.
+- Select a test framework; we currently use `mocha` / `chai` and `jest`, but use what you're most comfortable with.
 - Tests should be executable through `npm test`.
 - Update `README.md` as necessary.
 - Use `package.json` and do not commit / include `node_modules`.
-- All code should be written in JavaScript and executed using Node.js 8.
+- All code should be written in JavaScript and executed using Node.js >= 8.
 - Documentation and maintainability is a plus.
 
 ### Extra Credit
