@@ -107,7 +107,7 @@ git commit -m "Finally"
 Push the changes in your local repository to GitHub.
 
 ```bash
-git push origin master
+git push origin main
 ```
 
 Send the URL for the public repository as your submission.
