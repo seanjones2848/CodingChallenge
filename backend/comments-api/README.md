@@ -39,7 +39,7 @@ When creating a comment, use the following payloads:
 - Use POST to create a comment.
 - Use GET to retrieve comments associated with a shoot.
 - Return appropriate HTTP status codes for operations, including errors.
-- Use Node.js 8 and Express 4.
+- Use Node.js with Express.
 - Use any additional npm modules as appropriate.
 - Documentation and maintainability is a plus.
 - Tests are not a requirement, but will be considered favorably.
