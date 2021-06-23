@@ -40,6 +40,7 @@ When creating a comment, use the following payloads:
 - Use GET to retrieve comments associated with a shoot.
 - Return appropriate HTTP status codes for operations, including errors.
 - Use Node.js with Express.
+- Please do not use Express application generator packages. We want to experience your code and see how you structure an application.
 - Use any additional npm modules as appropriate.
 - Documentation and maintainability is a plus.
 - Tests are not a requirement, but will be considered favorably.
