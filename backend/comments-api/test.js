@@ -20,11 +20,29 @@ const comment3 = {
     "comment": "<script>alert('hello!');</script>"
 }
 
-describe('Testing Comments API', () => {
+describe('Testing Comments API Comment Injestion', () => {
     it('should injest comment1', () => {
         request(app)
         .post('comments')
         .send(comment1)
+        .expect(201)
+        .then((res) => {
+            expect(res.headers.location).to.be.eql('comments');
+        })
+    });
+    it('should injest comment2', () => {
+        request(app)
+        .post('comments')
+        .send(comment2)
+        .expect(201)
+        .then((res) => {
+            expect(res.headers.location).to.be.eql('comments');
+        })
+    });
+    it('should injest comment3', () => {
+        request(app)
+        .post('comments')
+        .send(comment3)
         .expect(201)
         .then((res) => {
             expect(res.headers.location).to.be.eql('comments');

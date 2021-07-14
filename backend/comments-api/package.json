@@ -1,12 +1,12 @@
 {
   "name": "comments-api",
   "version": "1.0.0",
-  "description": "## Goal",
+  "description": "Comment API for Kink challenge",
   "main": "app.js",
   "scripts": {
     "test": "mocha"
   },
-  "author": "",
+  "author": "Sean Jones",
   "license": "ISC",
   "dependencies": {
     "chai": "^4.3.4",
