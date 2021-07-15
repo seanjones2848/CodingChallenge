@@ -76,6 +76,7 @@ let checkForComments = shootId => {
         return 0;
     }
     returnComments = comments.filter(comment => comment.shootId == shootId)
+        .map(comment => comment.comment)
     if (!returnComments.length) {
         console.log(`no comments matching shootId: ${shootId}`)
         return 0;
