@@ -56,10 +56,11 @@ app.get('/comments/', (req, res) => {
         shootId = req.query.shootId;
         console.log('req.query.shootId', shootId);
         comments = checkForComments(shootId)
-        res.statusCode = 200;
         if (comments) {
+            res.statusCode = 200;
             res.send(`These are the comments for shootId: ${shootId} ${JSON.stringify(comments)}`)
         } else {
+            res.statusCode = 404;
             res.send(`There are no comments for your shootId: ${shootId}`)
         }
     } else {
