@@ -42,6 +42,7 @@ describe('Testing Comments API Comment Injestion', () => {
             "comment": "<script>alert('hello!');</script>"
         })
         .end((err, res) => {
+            expect(err).to.be.null;
             expect(res.statusCode).to.equal(201)
             done()
         })
@@ -54,6 +55,7 @@ describe('Testing Comments API Comment Retrieval', () => {
         .get('/comments')
         .query({shootId: '1'})
         .end((err, res) => {
+            expect(err).to.be.null;
             expect(res.statusCode).to.equal(200)
             done()
         })
@@ -63,6 +65,7 @@ describe('Testing Comments API Comment Retrieval', () => {
         .get('/comments')
         .query({shootId: '2'})
         .end((err, res) => {
+            expect(err).to.be.null;
             expect(res.statusCode).to.equal(200)
             done()
         })
@@ -77,6 +80,7 @@ describe('Testing Comments API Comment Injestion Failures', () => {
             "shootId": "1"
         })
         .end((err, res) => {
+            expect(err).to.be.null;
             expect(res.statusCode).to.equal(400)
             done()
         })
@@ -88,6 +92,7 @@ describe('Testing Comments API Comment Injestion Failures', () => {
             "comment": "this is a great comment"
         })
         .end((err, res) => {
+            expect(err).to.be.null;
             expect(res.statusCode).to.equal(400)
             done()
         })
@@ -100,6 +105,7 @@ describe('Testing Comments API Comment Injestion Failures', () => {
             "comment": "this is a great comment"
         })
         .end((err, res) => {
+            expect(err).to.be.null;
             expect(res.statusCode).to.equal(400)
             done()
         })
@@ -112,6 +118,7 @@ describe('Testing Comments API Comment Injestion Failures', () => {
             "comment": "short"
         })
         .end((err, res) => {
+            expect(err).to.be.null;
             expect(res.statusCode).to.equal(400)
             done()
         })
@@ -124,6 +131,7 @@ describe('Testing Comments API Comment Injestion Failures', () => {
             "comment": "This here is a too long comment that has waaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaay too many characters"
         })
         .end((err, res) => {
+            expect(err).to.be.null;
             expect(res.statusCode).to.equal(400)
             done()
         })
@@ -136,6 +144,7 @@ describe('Testing Comments API Comment Retrieval Failures', () => {
         .get('/comments')
         .query({shootId: '4'})
         .end((err, res) => {
+            expect(err).to.be.null;
             expect(res.statusCode).to.equal(404)
             done()
         })
@@ -145,6 +154,7 @@ describe('Testing Comments API Comment Retrieval Failures', () => {
         .get('/comments')
         .query({})
         .end((err, res) => {
+            expect(err).to.be.null;
             expect(res.statusCode).to.equal(400)
             done()
         })

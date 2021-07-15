@@ -15,7 +15,7 @@ app.get('/', (req, res) => res.send('This is a Comment API, please send requests
 
 // Recieve comments from client
 app.post('/comments/', (req, res) => {
-    body = req.body
+    let body = req.body
     console.log('req.body', req.body);
     if (ValidateComment(body)) {
         comments.push(body);
@@ -32,8 +32,8 @@ app.post('/comments/', (req, res) => {
 // Validation function checking for valid data in request body
 // Checks for length 10-100 latin chars, numerical shootId, and existance of parameters
 let ValidateComment = body => {
-    shootId = body.shootId;
-    comment = body.comment;
+    let shootId = body.shootId;
+    let comment = body.comment;
     if (!shootId | !comment) {
         console.log('failed existance check');
         return 0;
@@ -54,12 +54,12 @@ let ValidateComment = body => {
     return 1;
 }
 
-// Recieve shootId and hand out associated comments
+// Recieve shootId, retrieve and send out associated comments if they exist
 app.get('/comments/', (req, res) => {
     if (req.query.shootId) {
-        shootId = req.query.shootId;
+        let shootId = req.query.shootId;
         console.log('req.query.shootId', shootId);
-        returnComments = checkForComments(shootId)
+        let returnComments = checkForComments(shootId)
         if (returnComments) {
             res.statusCode = 200;
             res.send(`These are the comments for shootId: ${shootId} ${JSON.stringify(returnComments)}`)
