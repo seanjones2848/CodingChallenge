@@ -48,3 +48,8 @@ When creating a comment, use the following payloads:
 ### Time Allotment
 
 We respect your time and would prefer you not spend more than 3-5 hours on these challenges. Feel free to include code comments to indicate any features you don't have time to implement.
+
+### To Test
+
+- Run "node app" in one terminal
+- Run "npm run test" in second another

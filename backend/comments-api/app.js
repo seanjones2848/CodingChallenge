@@ -30,7 +30,7 @@ app.post('/comments/', (req, res) => {
 })
 
 // Validation function checking for valid data in request body
-// Checks for length 10-100 chars, numerical shootId, and existance of parameters
+// Checks for length 10-100 latin chars, numerical shootId, and existance of parameters
 let ValidateComment = body => {
     shootId = body.shootId;
     comment = body.comment;
@@ -46,6 +46,10 @@ let ValidateComment = body => {
             console.log('failed comment length check')
             return 0;
         }
+        if (!comment.match(/(?:[^a-zA-Z0-9]*[a-zA-Z0-9]){10}/)) {
+            console.log('not latin chars')
+            return 0;
+        }
     }
     return 1;
 }
@@ -55,10 +59,10 @@ app.get('/comments/', (req, res) => {
     if (req.query.shootId) {
         shootId = req.query.shootId;
         console.log('req.query.shootId', shootId);
-        comments = checkForComments(shootId)
-        if (comments) {
+        returnComments = checkForComments(shootId)
+        if (returnComments) {
             res.statusCode = 200;
-            res.send(`These are the comments for shootId: ${shootId} ${JSON.stringify(comments)}`)
+            res.send(`These are the comments for shootId: ${shootId} ${JSON.stringify(returnComments)}`)
         } else {
             res.statusCode = 404;
             res.send(`There are no comments for your shootId: ${shootId}`)
@@ -76,13 +80,14 @@ let checkForComments = shootId => {
         console.log('no comments exist yet')
         return 0;
     }
+    // Filters comments based on shootId then with the map grabs only the comment
     returnComments = comments.filter(comment => comment.shootId == shootId)
         .map(comment => comment.comment)
     if (!returnComments.length) {
         console.log(`no comments matching shootId: ${shootId}`)
         return 0;
     }
-    console.log(`returned ${returnComments.length} comments for shootId: ${shootId}`)
+    console.log(`returned ${returnComments.length} comments for shootId: ${shootId} : ${returnComments}`)
     return returnComments;
 }
 

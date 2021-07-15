@@ -1,126 +1,152 @@
-const express = require('express');
 const chai = require('chai');
+const chaiHttp = require('chai-http')
 const request = require('supertest');
 const { expect } = require('chai');
-const { exit } = require('process');
-const { doesNotMatch } = require('assert');
 
-const app = express();
+chai.use(chaiHttp)
 
-const comment1 = {
-    "shootId": 1,
-    "comment": "Nice!"
-}
-
-const comment2 = {
-    "shootId": 2,
-    "comment": "I don't like it."
-}
-
-const comment3 = {
-    "shootId": 1,
-    "comment": "<script>alert('hello!');</script>"
-}
+const app = 'http://localhost:3030';
 
 describe('Testing Comments API Comment Injestion', () => {
-    it('should injest comment1', () => {
+    it('should injest comment1 and fail', (done) => {
         request(app)
-        .post('comments')
-        .send(comment1)
-        .expect(201)
+        .post('/comments')
+        .send({
+            "shootId": 1,
+            "comment": "Nice!"
+        })
+        .end((err, res) => {
+            expect(err).to.be.null;
+            expect(res.statusCode).to.equal(400)
+            done()
+        })
     });
-    it('should injest comment2', () => {
+    it('should injest comment2', (done) => {
         request(app)
-        .post('comments')
-        .send(comment2)
-        .expect(201)
+        .post('/comments')
+        .send({
+            "shootId": 2,
+            "comment": "I don't like it."
+        })
+        .end((err, res) => {
+            expect(err).to.be.null;
+            expect(res.statusCode).to.equal(201)
+            done()
+        })
     });
-    it('should injest comment3', () => {
+    it('should injest comment3', (done) => {
         request(app)
-        .post('comments')
-        .send(comment3)
-        .expect(201)
+        .post('/comments')
+        .send({
+            "shootId": 1,
+            "comment": "<script>alert('hello!');</script>"
+        })
+        .end((err, res) => {
+            expect(res.statusCode).to.equal(201)
+            done()
+        })
     });
 });
 
 describe('Testing Comments API Comment Retrieval', () => {
-    it('should retrieve comments for shootId 1', () => {
+    it('should retrieve comments for shootId 1', (done) => {
         request(app)
-        .get('comments')
+        .get('/comments')
         .query({shootId: '1'})
-        .expect(201)
+        .end((err, res) => {
+            expect(res.statusCode).to.equal(200)
+            done()
+        })
     })
-    it('should retrieve comments for shootId 2', () => {
+    it('should retrieve comments for shootId 2', (done) => {
         request(app)
-        .get('comments')
+        .get('/comments')
         .query({shootId: '2'})
-        .expect(201)
-    })
-    it('should retrieve comments for shootId 3', () => {
-        request(app)
-        .get('comments')
-        .query({shootId: '3'})
-        .expect(201)
+        .end((err, res) => {
+            expect(res.statusCode).to.equal(200)
+            done()
+        })
     })
 });
 
 describe('Testing Comments API Comment Injestion Failures', () => {
-    it('should fail on comment existance check', () => {
+    it('should fail on comment existance check', (done) => {
         request(app)
-        .post('comments')
+        .post('/comments')
         .send({
             "shootId": "1"
         })
-        .expect(400)
+        .end((err, res) => {
+            expect(res.statusCode).to.equal(400)
+            done()
+        })
     })
-    it('should fail on comment existance check', () => {
+    it('should fail on comment existance check', (done) => {
         request(app)
-        .post('comments')
+        .post('/comments')
         .send({
             "comment": "this is a great comment"
         })
-        .expect(400)
+        .end((err, res) => {
+            expect(res.statusCode).to.equal(400)
+            done()
+        })
     })
-    it('should fail on shootId being an integer', () => {
+    it('should fail on shootId being an integer', (done) => {
         request(app)
-        .post('comments')
+        .post('/comments')
         .send({
             "shootId": "one",
             "comment": "this is a great comment"
         })
-        .expect(400)
+        .end((err, res) => {
+            expect(res.statusCode).to.equal(400)
+            done()
+        })
     })
-    it('should fail on comment length', () => {
+    it('should fail on comment length', (done) => {
         request(app)
-        .post('comments')
+        .post('/comments')
         .send({
             "shootId": "1",
             "comment": "short"
         })
-        .expect(400)
+        .end((err, res) => {
+            expect(res.statusCode).to.equal(400)
+            done()
+        })
     })
-    it('should fail on comment length', () => {
+    it('should fail on comment length', (done) => {
         request(app)
-        .post('comments')
+        .post('/comments')
         .send({
             "shootId": "1",
             "comment": "This here is a too long comment that has waaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaay too many characters"
         })
-        .expect(400)
+        .end((err, res) => {
+            expect(res.statusCode).to.equal(400)
+            done()
+        })
     })
 });
 
 describe('Testing Comments API Comment Retrieval Failures', () => {
-    it('should not exist', () => {
+    it('should not exist', (done) => {
         request(app)
-        .get('comments')
+        .get('/comments')
         .query({shootId: '4'})
-        .expect(404)
+        .end((err, res) => {
+            expect(res.statusCode).to.equal(404)
+            done()
+        })
     })
-    it('should not work', () => {
+    it('should not work', (done) => {
         request(app)
-        .get('comments')
+        .get('/comments')
         .query({})
-        .expect(400)
+        .end((err, res) => {
+            expect(res.statusCode).to.equal(400)
+            done()
+        })
     })
 })
